@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angel studio — Головна</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">Angel <span>studio</span></div>
+        <nav class="nav-links">
+            <a href="index.html" class="active">Головна</a>
+            <a href="skills.html">Навички</a>
+            <a href="portfolio.html">Портфоліо</a>
+            <a href="profile.html">Про мене</a>
+            <a href="status.html">Статус</a>
+            <a href="forma.html" class="btn-highlight">Замовити</a>
+        </nav>
+        <div class="nav-controls">
+            <button id="theme-toggle" class="theme-toggle-btn" title="Змінити тему">🌙</button>
+            <a href="#" id="admin-login-btn">Увійти</a>
+        </div>
+    </header>
+
+    <main class="container hero">
+        <div class="hero-content">
+            <span class="badge">⚡ Веб-розробка та створення сайтів</span>
+            <h1>Створюю сучасні та швидкі <span>сайти під ключ</span></h1>
+            <p>Якісний чистий код, адаптивний дизайн під мобільні пристрої та допомога з публікацією в мережу.</p>
+            <div class="hero-btns">
+                <a href="forma.html" class="btn primary-btn">Замовити сайт</a>
+                <a href="portfolio.html" class="btn secondary-btn">Переглянути роботи</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Плавающая кнопка Telegram -->
+    <a href="https://t.me/AngelYT3" target="_blank" class="floating-contact-btn">
+        💬 Написати в Telegram
+    </a>
+
+    <!-- Модальное окно входа -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <h3>Вхід в аккаунт адміна</h3>
+            <form id="admin-login-form">
+                <div class="input-group">
+                    <label for="admin-login">Логін</label>
+                    <input type="text" id="admin-login" required placeholder="Введіть логін">
+                </div>
+                <div class="input-group" style="margin-top: 15px;">
+                    <label for="admin-pass">Пароль</label>
+                    <input type="password" id="admin-pass" required placeholder="Введіть пароль">
+                </div>
+                <button type="submit" class="btn primary-btn" style="width: 100%; margin-top: 15px;">Увійти</button>
+                <p id="login-error" style="color: #f44336; margin-top: 10px; text-align: center; font-size: 0.9rem;"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Админ-панель -->
+    <div id="admin-panel-modal" class="modal">
+        <div class="modal-content admin-modal-content">
+            <span class="close-btn" id="close-admin-panel">&times;</span>
+            <h3 style="margin-bottom: 15px;">Панель адміністратора — Замовлення</h3>
+            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                <button id="clear-orders-btn" class="btn secondary-btn" style="border-color: #f44336; color: #f44336;">Очистити всі замовлення</button>
+                <button id="logout-btn" class="btn secondary-btn">Вийти</button>
+            </div>
+
+            <div class="kanban-board">
+                <div class="kanban-column">
+                    <div class="kanban-column-title review">📋 Взяти на розгляд</div>
+                    <div id="col-review"></div>
+                </div>
+                <div class="kanban-column">
+                    <div class="kanban-column-title dev">⚙️ В розробку</div>
+                    <div id="col-dev"></div>
+                </div>
+                <div class="kanban-column">
+                    <div class="kanban-column-title done">✅ Завершено</div>
+                    <div id="col-done"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Angel studio. Усі права захищено.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

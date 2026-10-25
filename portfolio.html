@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angel studio — Портфоліо та Відгуки</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">Angel <span>studio</span></div>
+        <nav class="nav-links">
+            <a href="index.html">Головна</a>
+            <a href="skills.html">Навички</a>
+            <a href="portfolio.html" class="active">Портфоліо</a>
+            <a href="profile.html">Про мене</a>
+            <a href="status.html">Статус</a>
+            <a href="forma.html" class="btn-highlight">Замовити</a>
+        </nav>
+        <div class="nav-controls">
+            <button id="theme-toggle" class="theme-toggle-btn" title="Змінити тему">🌙</button>
+            <a href="#" id="admin-login-btn">Увійти</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2 class="section-title">Моє <span>Портфоліо</span></h2>
+        
+        <div class="portfolio-grid">
+            
+            <!-- Карточка 1: Сайт для мамы -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="png.png" alt="Сайт для мами" class="portfolio-img">
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Сайт для мами</h3>
+                        <p>Інтерактивний сервіс послуг та замовлень із підтримкою сповіщень у Telegram.</p>
+                        <a href="https://kerdman385-svg.github.io/poslygi/" target="_blank" class="btn primary-btn">🚀 Відвідати</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка 2: Chupikshop -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="png2.png" alt="Chupikshop" class="portfolio-img">
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Chupikshop</h3>
+                        <p>Інтернет-магазин солодощів та подарункових боксів.</p>
+                        <a href="https://kerdman385-svg.github.io/Chupikshop/" target="_blank" class="btn primary-btn">🚀 Відвідати</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Раздел Отзывов -->
+        <section style="margin-top: 60px;">
+            <h2 class="section-title">Відгуки <span>Клієнтів</span></h2>
+            
+            <div id="reviews-list" class="reviews-grid"></div>
+
+            <!-- Форма оставления отзыва -->
+            <div class="order-form" style="margin-top: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                <h3>Залишити свій відгук</h3>
+                <form id="review-form" style="margin-top: 15px;">
+                    <div class="input-group">
+                        <label for="review-name">Ваше ім'я *</label>
+                        <input type="text" id="review-name" placeholder="Введіть ваше ім'я" required>
+                    </div>
+                    
+                    <div class="input-group" style="margin-top: 12px;">
+                        <label for="review-rating">Оцінка *</label>
+                        <select id="review-rating" style="width: 100%; padding: 12px; background: var(--input-bg); border: 1px solid var(--border-color); border-radius: 6px; color: var(--text-color);" required>
+                            <option value="5">⭐⭐⭐⭐⭐ (5/5)</option>
+                            <option value="4">⭐⭐⭐⭐ (4/5)</option>
+                            <option value="3">⭐⭐⭐ (3/5)</option>
+                            <option value="2">⭐⭐ (2/5)</option>
+                            <option value="1">⭐ (1/5)</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group" style="margin-top: 12px;">
+                        <label for="review-text">Ваш відгук *</label>
+                        <textarea id="review-text" rows="3" placeholder="Напишіть вашу думку про співпрацю..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn primary-btn" style="width: 100%; margin-top: 15px;">Опублікувати відгук</button>
+                    <p id="review-status" style="margin-top: 10px; text-align: center; font-weight: bold;"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Плавающая кнопка Telegram -->
+    <a href="https://t.me/AngelYT3" target="_blank" class="floating-contact-btn">
+        💬 Написати в Telegram
+    </a>
+
+    <!-- Модальное окно входа -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <h3>Вхід в акаунт адміна</h3>
+            <form id="admin-login-form">
+                <div class="input-group">
+                    <label for="admin-login">Логін</label>
+                    <input type="text" id="admin-login" required placeholder="Введіть логін">
+                </div>
+                <div class="input-group" style="margin-top: 15px;">
+                    <label for="admin-pass">Пароль</label>
+                    <input type="password" id="admin-pass" required placeholder="Введіть пароль">
+                </div>
+                <button type="submit" class="btn primary-btn" style="width: 100%; margin-top: 15px;">Увійти</button>
+                <p id="login-error" style="color: #f44336; margin-top: 10px; text-align: center; font-size: 0.9rem;"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Админ-панель -->
+    <div id="admin-panel-modal" class="modal">
+        <div class="modal-content admin-modal-content">
+            <span class="close-btn" id="close-admin-panel">&times;</span>
+            <h3 style="margin-bottom: 15px;">Панель адміністратора — Замовлення</h3>
+            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                <button id="clear-orders-btn" class="btn secondary-btn" style="border-color: #f44336; color: #f44336;">Очистити всі замовлення</button>
+                <button id="logout-btn" class="btn secondary-btn">Вийти</button>
+            </div>
+
+            <div class="kanban-board">
+                <div class="kanban-column">
+                    <div class="kanban-column-title review">📋 Взяти на розгляд</div>
+                    <div id="col-review"></div>
+                </div>
+                <div class="kanban-column">
+                    <div class="kanban-column-title dev">⚙️ В розробку</div>
+                    <div id="col-dev"></div>
+                </div>
+                <div class="kanban-column">
+                    <div class="kanban-column-title done">✅ Завершено</div>
+                    <div id="col-done"></div>
+                </div>
+            </div>
+            
+            <h4 style="margin-top: 25px; margin-bottom: 10px;">Керування відгуками:</h4>
+            <div id="admin-reviews-list"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Angel studio. Усі права захищено.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

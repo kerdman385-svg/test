@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель | Управление студией</title>
+    <!-- Подключаем стили -->
+    <link rel="stylesheet" href="style_7.css">
+    <!-- Подключаем библиотеку для графиков Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="admin-body">
+
+    <div class="admin-container">
+        <!-- Боковая навигация -->
+        <aside class="admin-sidebar">
+            <h2>Админ-панель</h2>
+            <ul class="admin-menu">
+                <li><a href="#" class="tab-link active" data-tab="dashboardTab">Главная & Аналитика</a></li>
+                <li><a href="#" class="tab-link" data-tab="ordersTab">Заказы (Kanban)</a></li>
+                <li><a href="#" class="tab-link" data-tab="activityLogTab">История действий</a></li>
+                <li><a href="#" class="tab-link" data-tab="contentEditorTab">Редактор контента</a></li>
+                <li><a href="index.html" class="back-site">← На сайт</a></li>
+            </ul>
+        </aside>
+
+        <!-- Основной контент -->
+        <main class="admin-main">
+            
+            <!-- Вкладка 1: Главная и Аналитика -->
+            <div id="dashboardTab" class="admin-tab-content active">
+                <h1>Дашборд и аналитика</h1>
+                
+                <!-- Блок аналитики (графики) -->
+                <div class="analytics-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0;">
+                    <div class="card" style="padding: 20px; background: var(--bg-card, #1e1e1e); border-radius: 12px; border: 1px solid var(--border-color, #333);">
+                        <h3>Статистика заказов</h3>
+                        <div style="position: relative; height: 250px; width: 100%;">
+                            <canvas id="ordersChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card" style="padding: 20px; background: var(--bg-card, #1e1e1e); border-radius: 12px; border: 1px solid var(--border-color, #333);">
+                        <h3>Популярность услуг</h3>
+                        <div style="position: relative; height: 250px; width: 100%;">
+                            <canvas id="servicesChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Вкладка 2: Заказы (Kanban + Фильтры + Экспорт/Импорт) -->
+            <div id="ordersTab" class="admin-tab-content" style="display: none;">
+                <h1>Управление заказами</h1>
+
+                <!-- Панель фильтров, поиска и экспорта/импорта -->
+                <div class="admin-controls-bar" style="display: flex; gap: 15px; margin: 20px 0; flex-wrap: wrap; align-items: center;">
+                    <input type="text" id="adminSearchInput" placeholder="🔍 Поиск по клиенту или услуге..." style="padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); flex: 1; min-width: 220px; background: var(--bg-input, #2a2a2a); color: inherit;">
+                    
+                    <select id="statusFilter" style="padding: 10px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-input, #2a2a2a); color: inherit;">
+                        <option value="all">Все статусы</option>
+                        <option value="pending">В обработке</option>
+                        <option value="progress">В работе</option>
+                        <option value="completed">Готово</option>
+                    </select>
+
+                    <div class="export-import-btns" style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button id="exportJsonBtn" class="btn-secondary" style="padding: 10px 15px; border-radius: 8px; cursor: pointer;">Экспорт JSON</button>
+                        <button id="exportCsvBtn" class="btn-secondary" style="padding: 10px 15px; border-radius: 8px; cursor: pointer;">Экспорт CSV</button>
+                        <label class="btn-secondary" style="cursor: pointer; display: inline-flex; align-items: center; padding: 10px 15px; border-radius: 8px; background: var(--bg-card, #2a2a2a); border: 1px solid var(--border-color);">
+                            Импорт <input type="file" id="importFile" accept=".json" style="display: none;">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Контейнер Kanban доски -->
+                <div class="kanban-board" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    <div class="kanban-column" data-status="pending" style="background: var(--bg-card); padding: 15px; border-radius: 8px;">
+                        <h3>В обработке</h3>
+                        <div class="kanban-cards-container" id="colPending"></div>
+                    </div>
+                    <div class="kanban-column" data-status="progress" style="background: var(--bg-card); padding: 15px; border-radius: 8px;">
+                        <h3>В работе</h3>
+                        <div class="kanban-cards-container" id="colProgress"></div>
+                    </div>
+                    <div class="kanban-column" data-status="completed" style="background: var(--bg-card); padding: 15px; border-radius: 8px;">
+                        <h3>Готово</h3>
+                        <div class="kanban-cards-container" id="colCompleted"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Вкладка 3: История действий (Activity Log) -->
+            <div id="activityLogTab" class="admin-tab-content" style="display: none;">
+                <h1>История действий</h1>
+                <div class="card" style="padding: 20px; background: var(--bg-card, #1e1e1e); border-radius: 12px; margin-top: 20px;">
+                    <ul id="activityLogList" style="list-style: none; padding: 0; max-height: 400px; overflow-y: auto;">
+                        <!-- Логи будут подставляться динамически -->
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Вкладка 4: Редактор контента -->
+            <div id="contentEditorTab" class="admin-tab-content" style="display: none;">
+                <h1>Редактор контента</h1>
+                <div class="card" style="padding: 20px; background: var(--bg-card, #1e1e1e); border-radius: 12px; margin-top: 20px;">
+                    <p style="color: var(--text-dim, #888);">Здесь вы можете управлять текстами и отзывами на сайте.</p>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+</html>

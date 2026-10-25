@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angel studio — Про мене</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Навигация -->
+    <header class="navbar">
+        <div class="logo">Angel <span>studio</span></div>
+        <nav class="nav-links">
+            <a href="index.html">Головна</a>
+            <a href="skills.html">Навички</a>
+            <a href="portfolio.html">Портфоліо</a>
+            <a href="profile.html" class="active">Про мене</a>
+            <a href="status.html">Статус</a>
+            <a href="forma.html" class="btn-highlight">Замовити</a>
+        </nav>
+        <div class="nav-controls">
+            <button id="theme-toggle" class="theme-toggle-btn" title="Змінити тему">🌙</button>
+            <a href="#" id="admin-login-btn" class="nav-links" style="font-size: 0.95rem;">Увійти</a>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="container">
+        <h2 class="section-title">Анкета <span>Розробника</span></h2>
+
+        <div class="profile-card-wrapper">
+            
+            <!-- Шапка профиля -->
+            <div class="profile-header-card">
+                <div class="profile-avatar">👨‍💻</div>
+                <div class="profile-title-box">
+                    <h3>Angel <span>studio</span></h3>
+                    <div class="profile-role">Frontend Developer / Веб-розробник</div>
+                    <div class="status-indicator">
+                        <span class="status-dot"></span>
+                        Вільний для нових замовлень
+                    </div>
+                </div>
+            </div>
+
+            <!-- Сетка с информацией по карточкам -->
+            <div class="skills-grid">
+                
+                <div class="skill-card">
+                    <h4 style="color: var(--accent-color); margin-bottom: 10px; font-size: 1.1rem;">🎯 Спеціалізація</h4>
+                    <p style="color: var(--text-dim); font-size: 0.95rem; line-height: 1.5;">Адаптивна верстка, інтерактивні скрипти та створення сучасних веб-сайтів під ключ.</p>
+                </div>
+
+                <div class="skill-card">
+                    <h4 style="color: var(--accent-color); margin-bottom: 10px; font-size: 1.1rem;">📍 Локація</h4>
+                    <p style="color: var(--text-dim); font-size: 0.95rem; line-height: 1.5;">Україна 🇺🇦</p>
+                </div>
+
+                <div class="skill-card">
+                    <h4 style="color: var(--accent-color); margin-bottom: 10px; font-size: 1.1rem;">🛠️ Стек інструментів</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;">
+                        <span class="badge">HTML5</span>
+                        <span class="badge">CSS3</span>
+                        <span class="badge">JavaScript</span>
+                        <span class="badge">VS Code</span>
+                        <span class="badge">Git / GitHub</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h4 style="color: var(--accent-color); margin-bottom: 10px; font-size: 1.1rem;">🤝 Підхід до роботи</h4>
+                    <p style="color: var(--text-dim); font-size: 0.95rem; line-height: 1.5;">Чистий код, дотримання термінів та повна допомога з запуском проєкту.</p>
+                </div>
+
+            </div>
+
+            <!-- Блок призыва к действию -->
+            <div class="skill-card" style="text-align: center;">
+                <h3 style="margin-bottom: 10px; font-size: 1.4rem;">Потрібен крутий сайт?</h3>
+                <p style="color: var(--text-dim); margin-bottom: 20px; font-size: 0.95rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+                    Обговоримо деталі твого проєкту чи розрахуємо вартість в кілька кліків.
+                </p>
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <a href="forma.html" class="btn primary-btn btn-pulse">Замовити розробку</a>
+                    <a href="https://t.me/AngelYT3" target="_blank" class="btn secondary-btn">Написати в Telegram</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Плавающая кнопка Telegram -->
+    <a href="https://t.me/AngelYT3" target="_blank" class="floating-contact-btn">
+        💬 Telegram
+    </a>
+
+    <!-- Модальное окно входа -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <h3 style="margin-bottom: 20px;">Вхід адміністратора</h3>
+            <form id="admin-login-form">
+                <div class="input-group" style="margin-bottom: 15px;">
+                    <label for="admin-login">Логін</label>
+                    <input type="text" id="admin-login" required placeholder="Введіть логін">
+                </div>
+                <div class="input-group">
+                    <label for="admin-pass">Пароль</label>
+                    <input type="password" id="admin-pass" required placeholder="Введіть пароль">
+                </div>
+                <button type="submit" class="btn primary-btn" style="width: 100%; margin-top: 20px;">Увійти</button>
+                <p id="login-error" style="color: #f44336; margin-top: 10px; text-align: center; font-size: 0.9rem;"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Админ-панель (модальное окно) -->
+    <div id="admin-panel-modal" class="modal">
+        <div class="modal-content admin-modal-content">
+            <span class="close-btn" id="close-admin-panel">&times;</span>
+            <h3 style="margin-bottom: 15px;">Панель адміністратора — Замовлення</h3>
+            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                <button id="clear-orders-btn" class="btn secondary-btn" style="border-color: #f44336; color: #f44336;">Очистити всі замовлення</button>
+                <button id="logout-btn" class="btn secondary-btn">Вийти</button>
+            </div>
+
+            <div class="kanban-board">
+                <div class="kanban-column">
+                    <div class="kanban-column-title review">📋 Взяти на розгляд</div>
+                    <div id="col-review"></div>
+                </div>
+                <div class="kanban-column">
+                    <div class="kanban-column-title dev">⚙️ В розробку</div>
+                    <div id="col-dev"></div>
+                </div>
+                <div class="kanban-column">
+                    <div class="kanban-column-title done">✅ Завершено</div>
+                    <div id="col-done"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Контейнер для уведомлений (Toast) -->
+    <div id="toast-container"></div>
+
+    <footer>
+        <p>&copy; 2026 Angel studio. Усі права захищено.</p>
+    </footer>
+
+    <!-- Скрипты сайта -->
+    <script src="scripts.js"></script>
+</body>
+</html>
